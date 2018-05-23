@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ROMANVS DRUM KIT</title>
+		<link rel = "stylesheet" href="style.css">
+	</head>
+	
+	<body>
+		<div class = "joke">
+			<b>ANCIENT COINS DRUM KIT YEET</b>
+		</div>
+		<div class= "keys">
+		
+			<div data-key= "65" class = "key">
+				<kbd>A</kbd>
+			</div>
+			
+			<div data-key = "83" class = "key">
+				<kbd>S</kbd>
+			</div>
+			
+			<div data-key = "68" class = "key">
+				<kbd>D</kbd>
+			</div>
+			
+			<div data-key = "70" class = "key">
+				<kbd>F</kbd>
+			</div>
+			
+			<div data-key = "71" class = "key">
+				<kbd>G</kbd>
+			</div>
+			
+			<div data-key = "72" class = "key">
+				<kbd>H</kbd>
+			</div>
+			
+			<div data-key = "74" class = "key">
+				<kbd>J</kbd>
+			</div>
+			
+			<div data-key = "75" class = "key">
+				<kbd>K</kbd>
+			</div>
+			
+			<div data-key = "76" class = "key">
+				<kbd>L</kbd>
+			</div>
+		</div>
+		
+		<audio data-key="65" src="clap.wav"></audio>
+		<audio data-key="83" src="hihat.wav"></audio>
+		<audio data-key="68" src="kick.wav"></audio>
+		<audio data-key="70" src="openhat.wav"></audio>
+		<audio data-key="71" src="boom.wav"></audio>
+		<audio data-key="72" src="ride.wav"></audio>
+		<audio data-key="74" src="snare.wav"></audio>
+		<audio data-key="75" src="tom.wav"></audio>
+		<audio data-key="76" src="tink.wav"></audio>
+		
+		<script>
+		//window is a reference for the webbrowser
+		//eventListener is an action 
+		//keydown is an event that triggers when a key on the keyboard is pressed
+		//const is a variable that cannot be changed, public static final equiv
+		//querySelector == selects the first element in CSS by name
+		//keyCode returns the unicode of a character, e.g. a = 68 etc
+		
+			function removeEffect(e) {
+				if(e.propertyName !== 'transform') return;//propertyName returns the css property name associated with the transition when a transition event occurs
+				this.classList.remove('playing');//returns the element that triggered the event
+			}
+			function playSound(e) {
+				const playSong = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+				const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+				if(playSong == null) return; //if audio querySelector returns null, return
+				key.classList.add('playing');
+				playSong.currentTime = 0; //rewind to start
+				playSong.play();
+			}
+			const keys = Array.from(document.querySelectorAll('.key'));//creates an array of all key divs
+			keys.forEach(key => key.addEventListener('transitionend', removeEffect));//loops through the array and calls removeEffect upon transition end
+			window.addEventListener('keydown', playSound);
+		</script>
+	</body>
+</html>
