@@ -1,0 +1,49 @@
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>ROMANVS CLOCK</title>
+	<link rel = "stylesheet" href="clockStyle.css">
+	  <embed src="imperator.mp3" autostart=true loop=true hidden=true>
+	<!-- <audio controls loop autoplay hidden>
+		<source src="imperator.mp3" type="audio/mpeg">
+	</audio> -->
+	</head>
+	
+	<body>
+		
+		<div class = "clockRim">
+			<div class = "eternal">
+			CIVILISATION IS ETERNAL
+		</div>
+			<div class = "longHand"></div>
+			<div class = "shortHand"></div>
+			<div class = "secondHand"></div>
+		</div>
+	</body>
+	
+	<script>
+	const secondHand = document.querySelector('.secondHand');
+	const shortHand = document.querySelector('.shortHand');
+	const longHand = document.querySelector('.longHand');
+		function setDate(){
+			const currentDate = new Date();
+			//gets the current date
+			const currentTime = currentDate.getSeconds();
+			//grabs the seconds from the current date.
+			const timeDegree = ((currentTime / 60) * 360) + 90;
+			//div began as horizontal and only was vertical when shifted 90 degrees, thus the clock hand has missed 90 degrees initially, thus + 90 to make up for the offset
+			secondHand.style.transform = `rotate(${timeDegree}deg)`;
+			//degree is constantly changing due to the equation and currentTime
+			
+			const currentMinute = currentDate.getMinutes();
+			const minuteDegree = ((currentMinute / 60) * 360) + 90;
+			shortHand.style.transform = `rotate(${minuteDegree}deg)`;
+			
+			const currentHour = currentDate.getHours();
+			const hourDegree = ((currentHour / 12) * 360) + 90;
+			longHand.style.transform = `rotate(${hourDegree}deg)`;
+		}
+		
+		setInterval(setDate, 1000);
+	</script>
+</html>

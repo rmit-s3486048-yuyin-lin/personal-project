@@ -1,0 +1,76 @@
+html {
+	height: 100%;
+	background-image:url("GREECE.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+body {
+	margin: 0;
+    font-size: 2rem;
+    display:flex;
+    flex:1;
+    min-height: 100vh;
+    align-items: center;
+}
+
+
+.clockRim {
+	width: 30rem;
+    height: 30rem;
+    border:10px solid black;
+    border-radius:50%;
+    margin:50px auto;
+    position: relative;
+    padding:2rem;
+}
+
+.longHand {
+	height: 8px;
+	background: black;
+	position: absolute;
+	width: 45%;
+	top: 50%;
+	transform-origin: 100%;
+	transform: rotate(90deg);
+	transition: all 0.05s;
+	transition-timing-function: cubic-bezier(0, 2.24, 0.86, 0.99);
+	/* all keyword transitions both the div and padding and everything included in the div*/
+}
+
+.shortHand {
+	height: 5px;
+	background: black;
+	position: absolute;
+	width: 45%;
+	top: 50%;
+	transform-origin: 100%;
+	transform: rotate(90deg);
+	transition: all 0.05s;
+	transition-timing-function: cubic-bezier(0, 2.24, 0.86, 0.99);
+}
+
+.secondHand {
+	height: 4px;
+	background: gray;
+	position: absolute;
+	width: 45%;
+	top: 50%;
+	transform-origin: 100%;
+	transform: rotate(90deg);
+	transition: all 0.05s;
+	transition-timing-function: cubic-bezier(0, 2.24, 0.86, 0.99);
+}
+
+.eternal {
+	text-align: center;
+	color: white;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 47%;
+}
+
+
+
